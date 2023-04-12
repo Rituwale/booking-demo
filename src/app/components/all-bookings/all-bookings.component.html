@@ -1,0 +1,42 @@
+<h1 class="mx-4 mt-2 text-primary">Bookings</h1>
+<div class="container-fluid mt-4 mx-2">
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field> 
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element"> <a (click)="openDialog(element)" class="text-primary"> Edit </a> </td>
+  </ng-container>
+    <ng-container matColumnDef="customerName">
+    <th mat-header-cell *matHeaderCellDef> Customer Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.personalInfo.customerName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="checkInDate">
+    <th mat-header-cell *matHeaderCellDef> CheckIn-CheckOut Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.searchHotel.checkInDate | date:'mediumDate'}}&nbsp;-&nbsp;{{element.searchHotel.checkOutDate | date:'mediumDate'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="mobNo">
+    <th mat-header-cell *matHeaderCellDef> Mobile Nunber </th>
+    <td mat-cell *matCellDef="let element"> {{element.personalInfo.mobNo}} </td>
+  </ng-container>
+  <ng-container matColumnDef="roomType">
+    <th mat-header-cell *matHeaderCellDef> Room Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.roomDetails?.roomType}} </td>
+  </ng-container>
+  <ng-container matColumnDef="paymentStatus">
+    <th mat-header-cell *matHeaderCellDef> Payment Status</th>
+    <td mat-cell *matCellDef="let element"> {{element.paymentDetails.paymentStatus}} </td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Row shown when there is no matching data. -->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter </td>
+  </tr>
+
+</table>
+</div>

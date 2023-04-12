@@ -1,0 +1,29 @@
+<h1>Choose Hotel</h1>
+
+<div class="container-fluid">
+  <mat-card class="example-card mt-4" *ngFor="let item of hotellist">
+    <div class="row">
+      <div class="col-md-4">
+        <img mat-card-image [src]="item.imageURL[1]" alt="Photo of a Shiba Inu" width="290" height="200" >
+      </div>
+      <div class="col-md-7 ms-4">
+        <mat-card-title class="mt-2">
+          Crowne Plaza Chennai Adyar Park, an IHG Hotel
+        </mat-card-title>
+        <mat-card-subtitle>{{item.distanceInfo}}les from search</mat-card-subtitle>
+
+        <p><span>4.3/5</span><span class="bg-success text-white p-1 mx-2">Excellent</span></p>
+
+        <mat-card-subtitle>
+          <span>Free</span><mat-icon>wifi</mat-icon><mat-icon>local_parking</mat-icon>
+        </mat-card-subtitle>
+        <p><span class="fs-5">${{item.charges.displayPrice}}</span></p>
+       <button mat-raised-button color="primary" matStepperNext>Select Hotel</button> 
+
+      </div>
+
+    </div>
+  </mat-card>
+</div>
+
+ 

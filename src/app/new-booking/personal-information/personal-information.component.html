@@ -1,0 +1,63 @@
+
+
+<h1>Personal Information</h1>
+<div class="container-fluid">
+  <form [formGroup]="personalInfoForm">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Customer Name</mat-label>
+        <input matInput formControlName="customerName">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Select Country</mat-label>
+        <mat-select formControlName="countryName">
+          <mat-option *ngFor="let country of countryList" [value]="country.value">
+            {{country.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> 
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput formControlName="mobNo">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Date Of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div> 
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-50">
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age">
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <label id="example-radio-group-label" class="mx-2">Gender:</label>
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-radio-button value="male" class="mx-1">Male</mat-radio-button>
+        <mat-radio-button value="female" class="mx-1">Female</mat-radio-button>
+        <mat-radio-button value="other" class="mx-1">Others</mat-radio-button>
+      </mat-radio-group>
+    </div>
+   
+   </div>
+   <button (click)="saveForm()">Save</button>
+</form>
+ <div class="text-end mt-2">
+  <button mat-raised-button color="primary" (click)="saveForm()"matStepperNext>Save & Next</button>
+ </div>
+
+</div>
+
+

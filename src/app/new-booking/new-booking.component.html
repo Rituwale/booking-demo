@@ -1,0 +1,63 @@
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <mat-stepper  [linear]="isLinear" #stepper>
+    <mat-step [stepControl]=" parentForm">
+      <form [formGroup]=" parentForm">
+        <ng-template matStepLabel>Search Hotel</ng-template>
+        <app-search-hotel></app-search-hotel>
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field> -->
+        </form>
+    </mat-step>
+    <mat-step [stepControl]=" parentForm" label="Choose Hotel">
+      <form [formGroup]=" parentForm">
+        <app-choose-hotel></app-choose-hotel>
+        </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Choose Room</ng-template>
+      <p>You are now done.</p>
+      <form [formGroup]=" parentForm">
+        <ng-template matStepLabel>Choose Room</ng-template>
+        <app-choose-room></app-choose-room>
+      </form>
+      </mat-step>
+      <mat-step [stepControl]=" parentForm" label="Choose Hotel">
+        <form [formGroup]=" parentForm">
+      <ng-template matStepLabel>Personal Information</ng-template>
+      <app-personal-information></app-personal-information>
+        </form>
+      </mat-step>
+    <mat-step [stepControl]=" parentForm" label="Choose Hotel">
+      <form [formGroup]=" parentForm">
+        <ng-template matStepLabel>Guest Information</ng-template>
+        <app-guest-information></app-guest-information>
+        </form>
+   </mat-step>
+  <mat-step [stepControl]=" parentForm" label="Choose Hotel">
+    <form [formGroup]=" parentForm">
+      <ng-template matStepLabel>Payment Details</ng-template>
+      <app-payment-details [stepper]="stepper"></app-payment-details>
+     </form>
+ </mat-step>
+ <mat-step [stepControl]=" parentForm" label="Choose Hotel">
+  <form [formGroup]=" parentForm">
+    <ng-template matStepLabel>Finish Booking</ng-template>
+    <div>
+      <div class="text-success mt-4 text-center">
+        <span class="fs-2">Hotel Booked Successfully</span>
+      </div>
+    <div>
+      <button mat-raised-button class="mx-2" matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" (click)="bookHotel()">All Bookings</button>
+    </div>
+  </div>
+</form>
+</mat-step>
+ </mat-stepper>
+
+
+  
